@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+body {
+	height: 100vh;
+	margin: 0;
+	display: grid;
+	place-items: center;
+	font-family: "JetBrains Mono", monospace;
+	perspective: 1000px;
+	perspective-origin: calc(50% - 0) calc(50% - 0);
+	background: rgb(249, 249, 249);
+}
+
+.holder {
+	width: 350px;
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	justify-content: space-between;
+	transform-style: preserve-3d;
+	animation: hold 30s infinite ease-in-out;
+}
+.holder:after {
+	content: "";
+	width: 500px;
+	height: 300px;
+	left: -150px;
+	top: -50px;
+	position: absolute;
+	background: rgb(249 249 249 / 0.9);
+	filter: blur(20px);
+}
+.holder:before {
+	content: "";
+	width: 200px;
+	height: 100px;
+	left: 0;
+	top: 50px;
+	position: absolute;
+	background: rgb(0 0 0 / 0.2);
+	transform: translateY(230px) rotateX(90deg);
+	filter: blur(20px);
+}
+
+@keyframes hold {
+	0%,
+	100% {
+		transform: rotateY(-30deg) rotateX(-2deg);
+	}
+	50% {
+		transform: rotateY(38deg) rotateX(8deg);
+	}
+}
+
+.reel {
+	position: relative;
+	//width: 500px;
+	//height: 100px;
+	//background: yellow;
+	transform-style: preserve-3d;
+}
+
+.reel div {
+	position: absolute;
+	text-align: center;
+	width: 50px;
+	height: 100px;
+	font-size: 72px;
+	line-height: 100px;
+	//background: #0003;
+	animation: fade 10s infinite linear;
+	//-webkit-backface-visibility: hidden; /* Safari */
+	//backface-visibility: hidden;
+}
+
+@for $i from 0 through 9 {
+	.reel div:nth-child(#{$i + 1}) {
+		--left: #{$i * 50px};
+		transform: translate(-50%, -50%) rotateX($i * 36deg) translateZ(154px);
+		animation-delay: #{$i + s};
+	}
+}
+
+* {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#ones {
+	animation: increment-ones 10s infinite ease-in;
+}
+#tens {
+	animation: increment-tens 100s infinite ease-in;
+}
+#hundreds {
+	animation: increment-hund 1000s infinite ease-in;
+}
+#thousands {
+	animation: increment-thou 10000s infinite ease-in;
+}
+#tenthousands {
+	animation: increment-tenthou 100000s infinite ease-in;
+}
+#hundredthousands {
+	animation: increment-hunthou 1000000s infinite ease-in;
+}
+#millions {
+	animation: increment-million 10000000s infinite ease-in;
+}
+#tenmillions {
+	animation: increment-tenmillion 10000000s infinite ease-in;
+}
+
+@keyframes increment-ones {
+	0% {
+		transform: rotateX(0);
+	}
+	@for $i from 1 through 10 {
+		#{$i}0% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
+@keyframes increment-tens {
+	0%,
+	9% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(-360deg);
+	}
+	@for $i from 1 through 9 {
+		#{$i}0%,
+		#{$i}9% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
+@keyframes increment-hund {
+	0%,
+	9.9% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(-360deg);
+	}
+	@for $i from 1 through 9 {
+		#{$i}0%,
+		#{$i}9.9% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
+@keyframes increment-thou {
+	0%,
+	9.99% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(-360deg);
+	}
+	@for $i from 1 through 9 {
+		#{$i}0%,
+		#{$i}9.99% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
+@keyframes increment-tenthou {
+	0%,
+	9.999% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(-360deg);
+	}
+	@for $i from 1 through 9 {
+		#{$i}0%,
+		#{$i}9.999% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
+@keyframes increment-hunthou {
+	0%,
+	9.9999% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(-360deg);
+	}
+	@for $i from 1 through 9 {
+		#{$i}0%,
+		#{$i}9.9999% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
+@keyframes increment-million {
+	0%,
+	9.99999% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(-360deg);
+	}
+	@for $i from 1 through 9 {
+		#{$i}0%,
+		#{$i}9.99999% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
+@keyframes increment-tenmillion {
+	0%,
+	9.999999% {
+		transform: rotateX(0);
+	}
+	100% {
+		transform: rotateX(-360deg);
+	}
+	@for $i from 1 through 9 {
+		#{$i}0%,
+		#{$i}9.999999% {
+			transform: rotateX((-36 * $i) + deg);
+		}
+	}
+}
